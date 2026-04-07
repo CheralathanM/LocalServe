@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html.dark {
+    color-scheme: dark;
+  }
+}
+
+/* Force dark mode styles over Tailwind's default utility classes */
+/* Tailwind v4 aggressively tree-shakes unused variables, so we use raw colors here to guarantee they work */
+html.dark body {
+  background-color: #030712 !important; /* gray-950 */
+  color: #f3f4f6 !important; /* gray-100 */
+}
+
+html.dark * {
+  border-color: #374151; /* gray-700 */
+}
+
+html.dark .bg-white {
+  background-color: #111827 !important; /* gray-900 */
+  color: #f3f4f6 !important; /* gray-100 */
+}
+
+html.dark .bg-gray-50, html.dark .bg-gray-100 {
+  background-color: #030712 !important; /* gray-950 */
+}
+
+html.dark .bg-indigo-50 {
+  background-color: #1e1b4b !important; /* indigo-950 */
+  color: #c7d2fe !important; /* indigo-200 */
+}
+
+html.dark .text-gray-900, html.dark .text-gray-800 {
+  color: #ffffff !important; /* white */
+}
+
+html.dark .text-gray-600, html.dark .text-gray-700 {
+  color: #d1d5db !important; /* gray-300 */
+}
+
+html.dark .text-gray-500 {
+  color: #9ca3af !important; /* gray-400 */
+}
+
+html.dark .border-gray-100, html.dark .border-gray-200 {
+  border-color: #1f2937 !important; /* gray-800 */
+}
+
+html.dark .shadow-sm, html.dark .shadow-md, html.dark .shadow-lg, html.dark .shadow-xl {
+  box-shadow: none !important;
+  border: 1px solid #1f2937 !important; /* gray-800 */
+}
+
+/* Specific elements where text-white should remain unchanged despite overrides above */
+html.dark .bg-indigo-600 {
+  color: #ffffff !important; 
+}
